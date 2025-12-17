@@ -31,7 +31,7 @@ sys.path.append('/path to codes/')
 from Reflection_Structure_DataLoader import cVAEDataLoader
 from Models import Autoencoder, cVAEtoStructureMH
 
-autoencoder_model_path = "path to the model/autoencoder_model_128_noise.pth"
+autoencoder_model_path = "path to the autoencoder model/autoencoder_model_128_noise.pth"
 ae_model = Autoencoder(latent_dim=128)
 ae_model.load_state_dict(torch.load(autoencoder_model_path, map_location=DEVICE, weights_only=True))
 ae_model.to(DEVICE)
