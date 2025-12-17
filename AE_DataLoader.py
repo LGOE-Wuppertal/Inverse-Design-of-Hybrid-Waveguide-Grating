@@ -29,12 +29,7 @@ class ReflectionDataLoader:
         Reflection_data = np.stack(Reflection_list)
 
         filenames = [f"Reflection_TM_{i}.csv" for i in range(self.start_index, self.end_index + 1)]
-        X_train, X_test , filenames_train, filenames_test= train_test_split(
-            Reflection_data,
-            filenames,
-            test_size=self.test_size,
-            random_state=self.rnd_numb
-        )
+        X_train, X_test , filenames_train, filenames_test= train_test_split(Reflection_data,filenames,test_size=self.test_size,random_state=self.rnd_numb)
 
         with open("Test_filenames-autoencoder-noise.txt", "w") as f:
             for name in filenames_test:
