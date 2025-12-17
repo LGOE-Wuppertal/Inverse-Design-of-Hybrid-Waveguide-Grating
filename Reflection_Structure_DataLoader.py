@@ -19,7 +19,6 @@ sys.path.append('/path to codes/')
 from Models import Autoencoder
 
 def load_model_and_reconstruct(input_tensor, model_path='/path to model/autoencoder_model_128_noise.pth', latent_dim=128, device='cpu'):
-
     model = Autoencoder(latent_dim=latent_dim)
     model.load_state_dict(torch.load(model_path, map_location=device, weights_only=True))
     model.to(device)
@@ -75,13 +74,9 @@ class ReflStrDataLoader:
         # print(Reflection_data.shape)
 
         if self.inverse:
-            X_train, X_test, y_train, y_test, train_file_names, test_file_names = train_test_split(
-                Reflection_data, Structure_data, file_names, test_size=self.test_size, random_state=self.rnd_numb
-            )
+            X_train, X_test, y_train, y_test, train_file_names, test_file_names = train_test_split(Reflection_data, Structure_data, file_names, test_size=self.test_size, random_state=self.rnd_numb)
         else:
-            X_train, X_test, y_train, y_test, train_file_names, test_file_names = train_test_split(
-                Structure_data, Reflection_data, file_names, test_size=self.test_size, random_state=self.rnd_numb
-            )
+            X_train, X_test, y_train, y_test, train_file_names, test_file_names = train_test_split(Structure_data, Reflection_data, file_names, test_size=self.test_size, random_state=self.rnd_numb)
 
         with open(self.filename, "w") as f:
             for name in test_file_names:
@@ -99,7 +94,7 @@ class ReflStrDataLoader:
         y_train_tensor = torch.tensor(y_train, dtype=torch.float32)
         y_test_tensor = torch.tensor(y_test, dtype=torch.float32)
 
-        
+       
         train_dataset = TensorDataset(X_train_tensor, y_train_tensor)
         test_dataset = TensorDataset(X_test_tensor, y_test_tensor)
 

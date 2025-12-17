@@ -117,8 +117,6 @@ class StructureToLatent(nn.Module):
 #     learning_rate: 0.00040305563500179175
 #     decay_step: 2196
 #     decay_factor: 0.5284655850306843
-
-
 class LatenttoStructureMH(nn.Module):
     def __init__(self, input_dim=128, output_dim=3):
         super(LatenttoStructureMH, self).__init__()
@@ -138,7 +136,6 @@ class LatenttoStructureMH(nn.Module):
             nn.Dropout(self.dropout_rate)
         )
 
-        # head_hidden = 64
         self.head_silver = nn.Sequential(
             nn.Linear(192, 288),
             nn.ReLU(),
@@ -209,7 +206,6 @@ class TandemNetwork(nn.Module):
 #     lr: 0.0007485453508139011
 #cVAE_Training has dropout = 0.0004 
 #cVAE_Training_2 has dropout = 0.1
-
 class cVAEtoStructureMH(nn.Module):
     def __init__(self, latent_dim=32, encoder_dropout=0.1, decoder_dropout=0.1, head_hidden=64):
         super(cVAEtoStructureMH, self).__init__()
